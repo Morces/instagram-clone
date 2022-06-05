@@ -4,19 +4,44 @@ body{
 }
 nav {
     background-color: white;
-    width: 80%;
+    width: 70%;
     margin: auto;
+    height: 10vh;
+    
 }
 
-.content {
-    background-color: rgb(245, 245, 245);
-}
 .navbar-brand h2 {
     font-family: 'Satisfy', cursive;  
+    margin-left: 9%;
+}
+.form form{
+    width: 100%;
+    margin: auto;
+    margin-left: 50%;
+    
+}
+.form input {
+    background-color: rgb(219, 219, 219);
+    text-align: center;
+}
+.form input::placeholder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    
 }
 ul.icons{
     width: 30%;
     margin: auto;
     display: flex;
     justify-content: space-between;
+    
+}
+ul.icons li a i{
+    color: black;
+}
+.feed{
+    width: 50%;
+    margin: auto;
 }
