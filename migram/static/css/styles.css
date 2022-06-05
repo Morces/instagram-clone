@@ -1,0 +1,22 @@
+body{
+    font-family: 'Poppins' sans-serif;
+   
+}
+nav {
+    background-color: white;
+    width: 80%;
+    margin: auto;
+}
+
+.content {
+    background-color: rgb(245, 245, 245);
+}
+.navbar-brand h2 {
+    font-family: 'Satisfy', cursive;  
+}
+ul.icons{
+    width: 30%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
