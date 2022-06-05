@@ -13,3 +13,4 @@ class Image(models.Model):
 
     def __str__(self):
         return '{} by @{}'.format(self.image_name, self.profile.user.username)
+

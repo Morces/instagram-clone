@@ -1,6 +1,7 @@
-{% extendes 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
+{% for image in images %}
 <div class="col-sm-12 col-md-8 offset-md-2 mt-5 p-0 post-container">
     <a href="">
         <div class="media pt-3 pl-3 pb-1">
@@ -10,9 +11,11 @@
             </div>
         </div>
     </a>
+    
     <a href="">
         <img src="{{image.image.url}}" alt="{{image.image_name}}">
     </a>
+    
     <p class="mt-1 ml-2">
         <a href="">
             <i class="bi bi-heart"></i>
@@ -22,3 +25,4 @@
         <b>{{image.image_name}}</b> - <small>{{image.created}}</small>
     </p>
 </div>
+{% endfor %}
