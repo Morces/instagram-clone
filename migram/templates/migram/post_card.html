@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block styles %}
+{{block.super}}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock styles%}
+
 {% block content %}
 {% for post in posts %}
 <div class="card">
     <div class="card-header">
         <div class="profile-image">
-
+            <!-- <img src="{{post.profile.user.picture}}" alt=""> -->
         </div>
-        <div class="post-image">
+        <div class="post-info">
             <div class="post-name">{{post.profile.user}}</div>
             <div class="post-location">Nairobi</div>
         </div>
@@ -17,7 +22,31 @@
         </div>
     </div>
     <div class="posting">
-        <img src="{{post.image.url}}" alt="">
+        <img src="{{post.image.url}}" alt="" style="width: 100%;">
+    </div>
+    <div class="engagement">
+        <a href="">
+            <i class="bi bi-heart"></i>
+        </a>
+        <a href="">
+            <i class="bi bi-chat"></i>
+        </a>
+        <a href="">
+            <i class="bi bi-send"></i>
+        </a>
+        <a href="">
+            <i class="bi bi-bookmark"></i>
+        </a>
+    </div>
+    <div class="likes">
+        <a href="">345</a>
+    </div>
+    <div class="caption">
+        <a href=""><h4>{{post.profile.user}}</h4></a>
+        <span><p>{{post.caption}}</p></span>
+    </div> 
+    <div class="time-posted">
+        {{ post.created | timesince }} AGO
     </div>
 </div>
 {% endfor %}

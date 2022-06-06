@@ -1,48 +1,171 @@
 body{
     font-family: 'Poppins' sans-serif;
-    background-color: rgb(235, 235, 235);
+    background-color: #FAFAFA;
    
 }
 nav {
-    background-color: white;
-    width: 70%;
+    background-color: #FFFFFF;
+    width: 100%;
     margin: auto;
-    /* height: 10vh; */
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    padding: 26px 20px;
+    flex-wrap: wrap;
     
 }
 
 .navbar-brand h2 {
     font-family: 'Satisfy', cursive;  
-    margin-left: 9%;
+    margin-left: 60%;
 }
 .form form{
-    width: 100%;
+    width: 90%;
     margin: auto;
-    margin-left: 50%;
+    margin-left: 60%;
     
 }
 .form input {
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(231, 229, 229);
     text-align: center;
-}
-.form input::placeholder{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: underline;
     
 }
+
 ul.icons{
-    width: 30%;
+    width: 25%;
     margin: auto;
     display: flex;
     justify-content: space-between;
-    
+    margin-right: 25%;
+    font-weight: bolder;
+    font-size: medium;
 }
 ul.icons li a i{
     color: black;
+    display: flex;
+    justify-content: space-evenly;
+}
+ul.icons li a {
+    text-decoration: none;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-evenly;
 }
 .feed{
     width: 50%;
     margin: auto;
+}
+.card{
+    width: 40%;
+    margin: auto;
+    margin-top: 5%;
+    height: auto;
+    border: 0.8px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins' sans-serif;
+}
+.card-header {
+    padding: 10px;
+    background-color: #FFFFFF;
+}
+.card-header a {
+    text-decoration: none;
+}
+.profile-image {
+    display: inline-block;
+    background-color: navy;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
+    border: 0 solid #0000;
+    border-radius: 50%;
+}
+.post-info {
+    display: inline-block;
+    padding-left: 15px;
+}
+.post-name {
+    font-size: 14px;
+    color: #111;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins' sans-serif;
+}
+.post-location {
+    font-size: 12px;
+    color: gray;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins' sans-serif;
+}
+.options {
+    font-size: 15px;
+    font-weight: bold;
+    float: right;
+    display: inline-block;
+    margin: 4px;
+    padding: 5px;
+    color: black;
+}
+
+.engagement{
+    display: inline-block;
+    width: 100%;
+    margin: 4px 0px 0px;
+    padding: 0px 16px;
+}
+.engagement a  {
+    color: black;
+    text-decoration: none;
+    padding: 7px;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Poppins' sans-serif;
+}
+.bi-bookmark {
+    float: right;
+    margin-right: 13px;
+}
+.likes  a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin: 0px 0px 8px;
+    padding: 0px 21px;
+    font-family: 'Poppins' sans-serif;
+}
+.caption {
+    display: inline-block;
+    width: 100%;
+    padding: 0px 16px;
+    font-family: 'Poppins' sans-serif;
+}
+.caption a {
+    font-size: 10px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    padding-left: 5px;
+    margin-left: -5px;
+    padding-right: 5px;
+}
+.caption span{
+    font-size: 15px;
+    font-weight: 400;
+    color: #111;
+    display: inline-block;
+    margin-right: 15px;
+}
+.time-posted{
+    font-size: 10px;
+    font-weight: 300;
+    color: black;
+    padding: 1px 16px;
+    text-transform: uppercase;
 }
