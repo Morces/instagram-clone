@@ -1,9 +1,10 @@
+import imp
 from django.views.generic import ListView, CreateView,DetailView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from migram.forms import PostForm
 from .models import Post
-
+from django.utils import timezone
 
 
 
@@ -29,16 +30,23 @@ class CreatePostView(LoginRequiredMixin, CreateView):
 class PostFeedView(ListView):
     template_name = 'migram/post_card.html'
     model = Post
-    queryset=Post.objects.all()
+    queryset=Post.objects.all().filter(created__lte=timezone.now())
     ordering = ('-created')
     # paginate_by = 4
     context_object_name = 'posts'
 
 class PostDetailView(DetailView):
     template_name='migram/detail.html'
-    slug_field='id'
-    slug_url_kwarg='post_id'
-    queryset=Post.objects.all()
-    context_object_name='detail'
+    # slug_field='id'
+    # slug_url_kwarg='post_id'
+    queryset=Post.objects.all().filter(created__lte=timezone.now())
+    ordering = ('-created')
+    # context_object_name='posts'
+
+    def get_object(self):
+        id_ = self.kwargs.get('id')
+        return get_object_or_404(Post, id=id_)
+
+
 
 
