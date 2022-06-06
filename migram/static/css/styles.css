@@ -1,12 +1,13 @@
 body{
     font-family: 'Poppins' sans-serif;
+    background-color: rgb(235, 235, 235);
    
 }
 nav {
     background-color: white;
     width: 70%;
     margin: auto;
-    height: 10vh;
+    /* height: 10vh; */
     
 }
 

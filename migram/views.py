@@ -1,10 +1,9 @@
-from multiprocessing import context
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView,DetailView
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from migram.forms import PostForm
-from migram.models import Image
+from .models import Post
 
 
 
@@ -21,18 +20,18 @@ class CreatePostView(LoginRequiredMixin, CreateView):
         return context
 
 class PostFeedView(ListView):
-    template_name = 'migram/feed.html'
-    model = Image
-    queryset=Image.objects.all()
+    template_name = 'migram/post_card.html'
+    model = Post
+    queryset=Post.objects.all()
     ordering = ('-created')
     # paginate_by = 4
-    context_object_name = 'feed'
+    context_object_name = 'posts'
 
 class PostDetailView(DetailView):
     template_name='migram/detail.html'
     slug_field='id'
     slug_url_kwarg='post_id'
-    queryset=Image.objects.all()
-    context_object_name='image'
+    queryset=Post.objects.all()
+    context_object_name='detail'
 
 

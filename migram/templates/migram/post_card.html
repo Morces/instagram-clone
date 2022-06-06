@@ -1,28 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% for image in images %}
-<div class="col-sm-12 col-md-8 offset-md-2 mt-5 p-0 post-container">
-    <a href="">
-        <div class="media pt-3 pl-3 pb-1">
-            <img src="{{image.profile.picture.url}}" alt="" class="mr-3 rounded-circle">
-            <div class="media-body">
-                <p style="margin-top: 5px;">{{image.profile.user.get_full_name}}</p>
-            </div>
+{% block content %}
+{% for post in posts %}
+<div class="card">
+    <div class="card-header">
+        <div class="profile-image">
+
         </div>
-    </a>
-    
-    <a href="">
-        <img src="{{image.image.url}}" alt="{{image.image_name}}">
-    </a>
-    
-    <p class="mt-1 ml-2">
-        <a href="">
-            <i class="bi bi-heart"></i>
-        </a> 30 likes
-    </p>
-    <p class="ml-2 mt-0 mb-2">
-        <b>{{image.image_name}}</b> - <small>{{image.created}}</small>
-    </p>
+        <div class="post-image">
+            <div class="post-name">{{post.profile.user}}</div>
+            <div class="post-location">Nairobi</div>
+        </div>
+        <div class="options">
+            <i class="bi bi-three-dots"></i>
+        </div>
+    </div>
+    <div class="posting">
+        <img src="{{post.image.url}}" alt="">
+    </div>
 </div>
 {% endfor %}
+{% endblock %}
+
+
