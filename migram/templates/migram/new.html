@@ -1,42 +1,14 @@
 {%extends 'base.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div id="profile-box" class="col-6 pt-3 pb-3">
-            <h4 class="mb-4">Post a new photo</h4>
-            <form action="" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-
-                <input type="hidden" name="user" value="{{}}">
-                <input type="hidden" name="profile" value="">
-
-                <div class="form-group">
-                    {% if form.title.erros %} is_valid {% endif %}
-                    <input type="text" class="form-control" name="image_name" placeholder="Title">
-                    <div class="invalid-feedback">
-                        {% for error in form.image_name.errors %}
-                            {{error}}
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="">Choose photo:</label>
-                    <input type="file" name="image" placeholder="photo">
-                    <div class="invalid-feedback">
-                        {% for error in form.image.errors %}
-                            {{error}}
-                        {% endfor %}
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block mt-5">Post</button>
-            </form>
+    <div class="panel panel-default" style="width: 500px; margin:0 auto;">
+        <div class="panel-body">
+            {% crispy form %}
+            {% csrf_token %}
         </div>
     </div>
-</div>
 
 {% endblock %}
