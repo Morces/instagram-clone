@@ -5,12 +5,10 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('createprofile/', views.create_profile, name='signup'),
-    path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout'),
+    path('signup/', views.signup, name='signup'),
     path('profile/', views.profile, name='profile'),
     path('profile/<int:id>/', views.profile, name='profile'),
-    path('search/', views.search, name='search'),
+    path('search/', views.search_profile, name='search'),
     path('uploadreel/', views.upload_reel, name='upload_reel'),
     path('uploadpost/', views.upload_post, name='upload_post'),
     path('reels/', views.reels, name='reels'),
