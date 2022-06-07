@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="form">
-            <form action="/search" method="get">
+            <form action="{% url 'search' %}" method="get">
                 <input type="search" class="form-control" name="search" placeholder="search">
             </form>
         </div>
@@ -39,12 +39,11 @@
                         <li>
                             <a class="dropdown-item" href="/uploadreel">Upload reel</a>
                         </li>
-                    </ul>
-                    <ul class="dropdown-menu" aria-labelledby="#navbarDropdown">
                         <li>
                             <a class="dropdown-item" href="/reels">Explore reel</a>
                         </li>
                     </ul>
+                    
                 </li>
                 <li class="nav-item">
                     <a href="">

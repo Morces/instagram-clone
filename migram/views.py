@@ -1,4 +1,3 @@
-from email import message
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
