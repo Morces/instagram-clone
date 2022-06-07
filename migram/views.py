@@ -49,11 +49,12 @@
 #         return get_object_or_404(Post, id=id_)
 
 
+
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate
-from migram.models import Post, Story,Profile
+from migram.models import Post, Reels, Story,Profile
 from django.contrib import messages
 
 
@@ -123,3 +124,43 @@ def search(request):
     profiles= Profile.objects.filter(user__username__icontains=search)
     context = {'profiles':profiles, 'username':search, 'picture':picture}
     return render(request, 'search.html', context)
+
+
+def follow(request,id,username):
+    profile = Profile.objects.get(id=id)
+    login_profile = Profile.objects.get(user=request.user) 
+    if request.user in profile.followers.all():
+        profile.followers.remove(request.user)
+        login_profile.followings.remove(profile.user)
+    else:
+        profile.followers.add(request.user)
+        login_profile.followings.add(profile.user)
+    return redirect(f'/search?username={username}')
+
+
+def upload_post(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    profile = Profile.objects.get(user=request.user)
+    picture = profile.picture.url
+    if request.method=='POST':
+        post = request.FILES['post']
+        profile = Profile.objects.get(user=request.user)
+        posts = Post.objects.create(user=request.user, image=post, profile=profile)
+        if posts:
+            messages.success(request, 'Post Uploaded!')
+    return render(request, 'upload-post.html', {'picture':picture})
+
+def upload_reel(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    profile=Profile.objects.get(user=request.user)
+    picture = profile.picture.url
+    if request.method=='POST':
+        reel = request.FILES['reel']
+        reels = Reels.objects.create(reel=reel)
+        if reels:
+            messages.success(request, 'Reel Uploaded')
+    return render(request, 'upload-reel.html', {'picture':picture})
+
+
