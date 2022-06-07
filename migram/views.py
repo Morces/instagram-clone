@@ -52,27 +52,56 @@
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import redirect, render
-
+from django.contrib.auth import authenticate
 from migram.models import Post, Story,Profile
+from django.contrib import messages
 
 
 def index(request):
     if not request.user.is_authenticated:
-        return redirect('Login')
+        return redirect('login')
     posts = Post.objects.filter(Q(profile__followers=request.user) & ~Q(likes=request.user))
     story = Story.objects.filter(profile__followers=request.user)
 
     context = {'posts':posts, 'stories':story}
-    return render(request, 'migram/index.html', context)
+    return render(request, 'index.html', context)
 
+def login(request):
+    if not request.user.is_authenticated:
+        return redirect("index")
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect('profile')
+    return render(request, 'login.html')
 
+def logout(request):
+    logout(request)
+    return redirect('login')
+
+def create_profile(request):
+    if request.user.is_authenticated:
+        return redirect('profile')
+    if request.method == 'POST':
+        username=request.POST['username']
+        password = request.POST['password']
+        picture = request.FILES['image']
+        user = User.objects.create_user(username=username, password=password)
+        profile = Profile.objects.create(user=user, picture=picture)
+        if profile:
+            messages.success(request, 'Profile Created Successfully. Login Now!')
+            return redirect('login')
+    return render(request, 'signup.html')
 
 def profile(request, id=None):
     if not request.user.is_authenticated:
-        return redirect('Login')
+        return redirect('login')
     if id is not None:
         profile_id = Profile.objects.get(id=id)
-        posts = Post.objects.filter(profile=profile)
+        posts = Post.objects.filter(profile=profile_id)
         posts_num = posts.count()
         profile = Profile.objects.get(user=request.user)
         picture = profile.picture.url
@@ -83,4 +112,14 @@ def profile(request, id=None):
         profile = Profile.objects.get(user=request.user)
         picture = profile.picture.url
     
-    return render(request, 'users/profile.html', {'profile':profile_id, 'picture':picture, 'profile_of_user':True, 'posts':posts, 'posts_num':posts_num})
+    return render(request, 'profile.html', {'profile':profile_id, 'picture':picture, 'profile_of_user':True, 'posts':posts, 'posts_num':posts_num})
+
+def search(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    profile = Profile.objects.get(user=request.user)
+    picture = profile.picture.url
+    search = request.GET['username']
+    profiles= Profile.objects.filter(user__username__icontains=search)
+    context = {'profiles':profiles, 'username':search, 'picture':picture}
+    return render(request, 'search.html', context)
