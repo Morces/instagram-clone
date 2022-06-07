@@ -9,10 +9,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="form">
-            <form action="">
+            <form action="/search" method="get">
                 <input type="search" class="form-control" name="search" placeholder="search">
             </form>
-            
         </div>
        
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,14 +27,24 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="new/">
+                    <a href="/uploadpost">
                         <i class="bi bi-plus-circle"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false" data-bs-toggle="dropdown">
                         <i class="bi bi-compass"></i>
                     </a>
+                    <ul class="dropdown-menu" aria-labelledby="#navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="/uploadreel">Upload reel</a>
+                        </li>
+                    </ul>
+                    <ul class="dropdown-menu" aria-labelledby="#navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="/reels">Explore reel</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="">
@@ -43,11 +52,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="">
-                        <i class="bi bi-person-circle"></i>
-                    </a>
+                    <a href="/profile"><img src="{{picture}}" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/profile" class="text-dark"><h5>{{request.user}}</h5></a>
                 </li>
             </ul>
+            
         </div>
     </div>
 </nav>

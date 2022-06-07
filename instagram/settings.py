@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'migram',
-    'users',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -80,7 +79,7 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'posts',
+        'NAME': 'instagram',
         'USER': 'moringa',
         'PASSWORD': 'morces'
     }

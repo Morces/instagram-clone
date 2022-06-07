@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     bio = models.TextField(blank=True)
     picture = models.ImageField(upload_to = 'users/pictures', blank=True, null=True)
     followers = models.ManyToManyField(User, related_name='followers', blank=True)
@@ -23,12 +23,9 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)
 
-    def __str__(self):
-        return '{} by @{}'.format(self.title, self.profile.user.username)
-
-
+    
 
 
 class Reels(models.Model):

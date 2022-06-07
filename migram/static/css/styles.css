@@ -34,7 +34,7 @@ nav {
 }
 
 ul.icons{
-    width: 25%;
+    width: 35%;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -45,13 +45,13 @@ ul.icons{
 ul.icons li a i{
     color: black;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 ul.icons li a {
     text-decoration: none;
     font-weight: bolder;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .feed{
     width: 50%;
@@ -73,7 +73,10 @@ ul.icons li a {
 .card-header a {
     text-decoration: none;
 }
-.profile-image img{
+.post-story .posts #post {
+    margin-top: 10%;
+}
+.post-story .posts #post .post-header.profile-image img{
     display: inline-block;
     height: 30px;
     width: 30px;
@@ -83,11 +86,11 @@ ul.icons li a {
     border-radius: 50%;
     float: left;
 }
-.post-info {
+.post-story .posts #post .post-header .post-info {
     display: inline-block;
-    padding-left: 15px;
+    /* padding-left: 5px; */
 }
-.post-name {
+.post-story .posts #post .post-header.post-name {
     font-size: 14px;
     color: #111;
     font-weight: 700;
@@ -95,14 +98,14 @@ ul.icons li a {
     margin: 0;
     font-family: 'Poppins' sans-serif;
 }
-.post-location {
+.post-story .posts #post .post-header.post-location {
     font-size: 12px;
     color: gray;
     padding: 0;
     margin: 0;
     font-family: 'Poppins' sans-serif;
 }
-.options {
+.post-story .posts #post .post-header.options {
     font-size: 15px;
     font-weight: bold;
     float: right;
@@ -112,7 +115,7 @@ ul.icons li a {
     color: black;
 }
 
-.engagement{
+.post-story .posts #post .engagement{
     display: inline-block;
     width: 100%;
     margin: 4px 0px 0px;
@@ -185,3 +188,88 @@ ul.icons li a {
     padding: 1px 16px;
     text-transform: uppercase;
 }
+.post-story{
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+
+}
+.post-story.stories{
+    width: 90%;
+    height: 10vh;
+    background-color: #fafafa;
+    border: 1px solid #a19b9b;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.post-story .stories::-webkit-scrollbar {
+    display: none;
+}
+
+.post-story .stories .story {
+    min-width: 50px;
+    max-width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid #bd5b6c;
+    margin-left: 5px;
+}
+
+.post-story .stories .story img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    z-index: -1;
+    cursor: pointer;
+}
+
+.post-story .posts {
+    width: 90%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.post-story .posts #post {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border: 1px solid #000;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.post-story .posts #post .post-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 15px;
+    height: 10vh;
+}
+
+.post-story .posts #post .post-header .profile-image img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+

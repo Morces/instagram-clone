@@ -8,23 +8,23 @@
 
 {% block content %}
 
-<div class="card post-story">
+<div class="post-story">
     <div class="stories">
-        {% for story in stories %}
+       
             <div class="story">
                 <img src="{{story.story.url}}" id="story-image" alt="">
             </div>
-        {% endfor %}
+        
     </div>
     <div class="posts">
-        {% for post in posts %}
-        <div class="card">
-            <div class="card-header">
+        
+        <div class="card" id="post">
+            <div class="card-header post-header">
                 <div class="profile-image">
-                    <img src="{{post.profile.picture.url}}" height="30" style="border-radius: 50%; padding: 0; margin: 0;display: inline-block; width: 30px;" alt="">
+                    <img src="{{post.profile.picture.url}}" height="30" style="border-radius: 50%; padding: 0; margin: 0;display: inline-block; width: 30px; border-radius: 50%;" alt="">
                 </div>
                 <div class="post-info">
-                    <div class="post-name">{{post.profile.user}}</div>
+                    <div class="post-name">{{request.user}}</div>
                     <div class="post-location">Nairobi</div>
                 </div>
                 <div class="options">
@@ -36,7 +36,7 @@
             </div>
             <div class="engagement">
                 <a href="/like/{{post.id}}" id="like">
-                    <button class="heart" onclick="like()" style="border: none;background-color: transparent;"><i class="bi bi-heart"></i></button>
+                    <i class="bi bi-heart"></i>
                 </a>
                 <a href="">
                     <i class="bi bi-chat"></i>
@@ -60,7 +60,7 @@
                 {{ post.created | timesince }} AGO
             </div>
         </div>
-        {% endfor %}
+       
     </div>
 </div>
 
