@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from migram.models import Post
+from migram.models import Post, Reels, Story
 
 # Register your models here.
 admin.site.register(Post)
@@ -10,3 +10,6 @@ class PostAdmin(admin.ModelAdmin):
     list_editable=('title', 'image')
     search_fields=('profile__user__email','profile__user__username','profile__user__first_name', 'profile__user__last_name', 'title')
     list_filter=('created', 'modified', 'profile__user__is_active','profile__user__is_staff')
+
+admin.site.register(Story)
+admin.site.register(Reels)
