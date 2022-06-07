@@ -163,4 +163,33 @@ def upload_reel(request):
             messages.success(request, 'Reel Uploaded')
     return render(request, 'upload-reel.html', {'picture':picture})
 
+def reels(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    profile = Profile.objects.get(user=request.user)
+    picture = profile.picture.url
+    reels = Reels.objects.all()
+    return render(request, 'reels.html', {'reels':reels, 'picture':picture})
+
+
+def like_reel(request,id):
+    reel= Reels.objects.get(id=id)
+    if request.user in reel.likes.all():
+        reel.likes.remove(request.user)
+    else:
+        reel.likes.add(request.user)
+    return redirect('reels')
+
+def upload_story(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    profile = Profile.objects.get(user=request.user)
+    picture = profile.picture.url
+    if request.method=='POST':
+        story = request.FILES['story']
+        profile = Profile.objects.get(user=request.user)
+        story_upload = Story.objects.create(story=story,profile=profile)
+        if story_upload:
+            messages.success(request, 'Story uploaded')
+    return render(request, 'upload-story.html', {'picture':picture})
 
