@@ -18,7 +18,8 @@ class CreatePostView(LoginRequiredMixin, CreateView):
 
     def form_valid(self,form):
         print(form.cleaned_data)
-        form.instance.profile = self.request.user
+        # form.instance.profile = self.request.user.profile
+        form.save()
         return super().form_valid(form)
 
 

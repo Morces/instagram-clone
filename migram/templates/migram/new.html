@@ -6,8 +6,10 @@
 
     <div class="panel panel-default" style="width: 500px; margin:0 auto;">
         <div class="panel-body">
-            {% crispy form %}
-            {% csrf_token %}
+            <form action="" method="post">
+                {% crispy form %}
+                {% csrf_token %}
+            </form>
         </div>
     </div>
 
