@@ -73,15 +73,15 @@ ul.icons li a {
 .card-header a {
     text-decoration: none;
 }
-.profile-image {
+.profile-image img{
     display: inline-block;
-    background-color: navy;
     height: 30px;
     width: 30px;
-    padding: 0;
+    padding: 1px 0px;
     margin: 0;
     border: 0 solid #0000;
     border-radius: 50%;
+    float: left;
 }
 .post-info {
     display: inline-block;
@@ -126,19 +126,35 @@ ul.icons li a {
     font-weight: 600;
     font-family: 'Poppins' sans-serif;
 }
+.engagement a i:hover{
+    color: gray;
+}
+.engagement button.heart{
+    background-color: transparent;
+    border: none;
+}
 .bi-bookmark {
     float: right;
     margin-right: 13px;
 }
-.likes  a {
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    color: black;
-    margin: 0px 0px 8px;
-    padding: 0px 21px;
+.likes{
+    display: inline-block;
+    width: 100%;
+    padding: 0px 1px;
     font-family: 'Poppins' sans-serif;
 }
+
+.likes  span {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: black;
+    margin: 0px 0px 8px;
+    padding: 0px 16px;
+    font-family: 'Poppins' sans-serif;
+}
+
 .caption {
     display: inline-block;
     width: 100%;
@@ -146,7 +162,7 @@ ul.icons li a {
     font-family: 'Poppins' sans-serif;
 }
 .caption a {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
     color: black;
     text-decoration: none;
