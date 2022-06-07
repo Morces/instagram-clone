@@ -65,8 +65,8 @@ class Post(models.Model):
     def total_likes(self):
         return self.likes.count()
 
-    def __str__(self):
-        return f'{self.user.name} Post'
+    # def __str__(self):
+    #     return f'{self.user.caption} Post'
 
 
 class Comment(models.Model):
@@ -84,6 +84,7 @@ class Comment(models.Model):
 class Follow(models.Model):
     follower = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='following')
     followed = models.ForeignKey(Profile, on_delete=models.CASCADE,related_name='followers')
+    
 
     def __str__(self):
         return f'{self.follower} Follow'

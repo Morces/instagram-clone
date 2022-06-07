@@ -10,8 +10,17 @@ from django.views.generic import RedirectView
 
 def index(request):
     images = Post.objects.all()
-    stories = Story.objects.filter(profile__followers=request.user)
-    context = {'images':images, 'stories':stories}
+    users = User.objects.exclude(id=request.user.id)
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user.profile
+            post.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = PostForm()
+    context = {'images':images, 'form':form, 'users':users}
     return render(request, 'index.html', context)
 
 def signup(request):
