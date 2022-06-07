@@ -7,7 +7,7 @@
 {% endblock styles%}
 
 {% block content %}
-{% for post in posts %}
+
 <div class="card">
     <div class="card-header">
         <div class="profile-image">
@@ -50,7 +50,7 @@
         {{ post.created | timesince }} AGO
     </div>
 </div>
-{% endfor %}
+
 {% endblock %}
 
 {% block scripts%}
