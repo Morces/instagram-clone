@@ -180,6 +180,14 @@ def like_reel(request,id):
         reel.likes.add(request.user)
     return redirect('reels')
 
+def like_post(request,id):
+    post = Post.objects.filter(id=id)
+    if request.user in post[0].likes.all():
+        post[0].likes.remove(request.user)
+    else:
+        post[0].likes.add(request.user)
+    return redirect('index')
+
 def upload_story(request):
     if not request.user.is_authenticated:
         return redirect('login')

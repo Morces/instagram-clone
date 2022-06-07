@@ -8,48 +8,62 @@
 
 {% block content %}
 
-<div class="card">
-    <div class="card-header">
-        <div class="profile-image">
-            <img src="{{post.profile.picture.url}}" height="30" style="border-radius: 50%; padding: 0; margin: 0;display: inline-block; width: 30px;" alt="">
+<div class="card post-story">
+    <div class="stories">
+        {% for story in stories %}
+            <div class="story">
+                <img src="{{story.story.url}}" id="story-image" alt="">
+            </div>
+        {% endfor %}
+    </div>
+    <div class="posts">
+        {% for post in posts %}
+        <div class="card">
+            <div class="card-header">
+                <div class="profile-image">
+                    <img src="{{post.profile.picture.url}}" height="30" style="border-radius: 50%; padding: 0; margin: 0;display: inline-block; width: 30px;" alt="">
+                </div>
+                <div class="post-info">
+                    <div class="post-name">{{post.profile.user}}</div>
+                    <div class="post-location">Nairobi</div>
+                </div>
+                <div class="options">
+                    <i class="bi bi-three-dots"></i>
+                </div>
+            </div>
+            <div class="posting">
+                <img src="{{post.image.url}}" alt="" style="width: 100%;">
+            </div>
+            <div class="engagement">
+                <a href="/like/{{post.id}}" id="like">
+                    <button class="heart" onclick="like()" style="border: none;background-color: transparent;"><i class="bi bi-heart"></i></button>
+                </a>
+                <a href="">
+                    <i class="bi bi-chat"></i>
+                </a>
+                <a href="">
+                    <i class="bi bi-send"></i>
+                </a>
+                <a href="">
+                    <i class="bi bi-bookmark"></i>
+                </a>
+            </div>
+            <div class="likes">
+                <span><p id="like-count">{{post.likes.count}}likes</p></span>
+                
+            </div>
+            <div class="caption">
+                <a href=""><h6>{{post.profile.user}}</h6></a>
+                <span><p>{{post.caption}}</p></span>
+            </div> 
+            <div class="time-posted">
+                {{ post.created | timesince }} AGO
+            </div>
         </div>
-        <div class="post-info">
-            <div class="post-name">{{post.profile.user}}</div>
-            <div class="post-location">Nairobi</div>
-        </div>
-        <div class="options">
-            <i class="bi bi-three-dots"></i>
-        </div>
-    </div>
-    <div class="posting">
-        <img src="{{post.image.url}}" alt="" style="width: 100%;">
-    </div>
-    <div class="engagement">
-        <a href="">
-            <button class="heart" onclick="like()" style="border: none;background-color: transparent;"><i class="bi bi-heart"></i></button>
-        </a>
-        <a href="">
-            <i class="bi bi-chat"></i>
-        </a>
-        <a href="">
-            <i class="bi bi-send"></i>
-        </a>
-        <a href="">
-            <i class="bi bi-bookmark"></i>
-        </a>
-    </div>
-    <div class="likes">
-        <span><p id="like-count">0 likes</p></span>
-        
-    </div>
-    <div class="caption">
-        <a href=""><h6>{{post.profile.user}}</h6></a>
-        <span><p>{{post.caption}}</p></span>
-    </div> 
-    <div class="time-posted">
-        {{ post.created | timesince }} AGO
+        {% endfor %}
     </div>
 </div>
+
 
 {% endblock %}
 

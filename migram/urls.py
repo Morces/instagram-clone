@@ -1,17 +1,23 @@
+from django.contrib.auth import authenticate, login, logout
 from django.urls import path
-from django.contrib.auth import login, logout, authenticate
 
 from . import views
-# from .views import PostDetailView,PostFeedView,CreatePostView
-
-app_name='migram'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('new/', CreatePostView.as_view(), name='create_post'),
-    # path('<int:id>/', PostDetailView.as_view(),name='post_detail'),
+    path('createprofile/', views.create_profile, name='signup'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     path('profile/', views.profile, name='profile'),
-
+    path('profile/<int:id>/', views.profile, name='profile'),
+    path('search/', views.search, name='search'),
+    path('uploadreel/', views.upload_reel, name='upload_reel'),
+    path('uploadpost/', views.upload_post, name='upload_post'),
+    path('reels/', views.reels, name='reels'),
+    path('uploadstory/', views.upload_story, name='upload_story'),
+    path('likereel/<int:id>/', views.upload_post, name='like_reel'),
+    path('like/<int:id>/', views.like_post, name='like'),
+    path('follow/<int:id>/<str:username>/', views.follow, name='follow'),
 ]
 
 
