@@ -1,3 +1,4 @@
+
 from django.db import models
 from users.models import Profile
 from django.contrib.auth.models import User
@@ -15,4 +16,12 @@ class Post(models.Model):
 
     def __str__(self):
         return '{} by @{}'.format(self.title, self.profile.user.username)
+
+class Reels(models.Model):
+    reel = models.FileField(upload_to='migram/reel')
+    likes = models.ManyToManyField(User, blank=True)
+
+class Story(models.Model):
+    story = models.ImageField(upload_to='migram/story')
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
 
