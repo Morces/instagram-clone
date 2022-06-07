@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import Profile
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -10,6 +11,7 @@ class Post(models.Model):
     caption = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
 
     def __str__(self):
         return '{} by @{}'.format(self.title, self.profile.user.username)
