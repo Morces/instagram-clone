@@ -1,10 +1,12 @@
 from django.urls import path, include
 from migram.views import PostLikeToggle
 from . import views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('account/', include('django.contrib.auth.urls')),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('signup/', views.signup, name='signup'),
     path('profile/<username>', views.profile, name='profile'),
     path('user_profile/<username>/', views.user_profile, name='profile'),

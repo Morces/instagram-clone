@@ -58,7 +58,7 @@ ul.icons li a {
     margin: auto;
 }
 .card{
-    width: 40%;
+    width: 50%;
     margin: auto;
     margin-top: 5%;
     height: auto;
@@ -105,7 +105,7 @@ ul.icons li a {
     margin: 0;
     font-family: 'Poppins' sans-serif;
 }
-.post-story .posts #post .post-header.options {
+.card-header.options {
     font-size: 15px;
     font-weight: bold;
     float: right;
@@ -253,7 +253,7 @@ ul.icons li a {
     margin-top: 10px;
 }
 
-.post-story .posts #post .post-header {
+.card-header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

@@ -73,9 +73,14 @@
             {% for image in images %}
             <div class="card mb-4">
                 <div class="card-header">
-                    <img src="{{image.user.picture.url}}" class="rounded-circle border ml-3 mt-2  mr-3"
-                         alt="" width="35" height="35">
-                   
+                    <img src="{{image.profile.picture.url}}" class="rounded-circle border ml-3 mt-2  mr-3" alt="" width="35" height="35">
+                    <div class="post-info">
+                        <div class="post-name">{{profile.user.username}}</div>
+                        <div class="post-location">Nairobi</div>
+                    </div>
+                    <div class="options">
+                        <i class="bi bi-three-dots"></i>
+                    </div>
                 </div>
                 <div class="cardy mb-4">
                     <a href="{% url 'comment' image.id %}">
@@ -114,8 +119,8 @@
         </div>
         <div class="col-md-4 mt-4 userinfo">
             <div class="row">
-                <div class="col-md-3 ml-2">
-                    <img class="rounded-circle user-img" src="{{ user.profile.picture.url }}">
+                <div class="col-md-3 ml-2" style="margin-top: 5%;">
+                    <img class="rounded-circle user-img" src="{{ user.profile.picture.url }}" height="55px" width="55px">
                 </div>
                 <div class="col-md-6 mt-4 user-detail">
                     <span class=" text-secondary"></span> <br>
@@ -130,8 +135,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-2 mr-3 mt-1 mb-2">
-                                    <img class="img-responsive" src="{{ user.profile.picture.url }}"
-                                         width="30px" height="30px">
+                                    <img class="img-responsive" src="{{ image.profile.picture.url }}"
+                                         width="55px" height="55px">
                                 </div>
                                 <div class="col-md-6 mr-2 mt-2">
                                     <span></span>

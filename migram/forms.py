@@ -4,11 +4,19 @@ from django.contrib.auth.models import User
 from .models import Post,Profile,Comment
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(max_length=255, help_text='Required! Type a Valid email address!')
+    email = forms.EmailField(max_length=255)
 
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+
+# class LogInForm(UserCreationForm):
+#     email = forms.EmailField(max_length=255, help_text='Required! Type a Valid email address!')
+#     class Meta:
+#         model = User
+#         fields = ('username', 'password')
+
 
 class UpdateUserForm(forms.ModelForm):
     email = forms.EmailField(max_length=255, help_text='Required! Type a Valid email address!')
