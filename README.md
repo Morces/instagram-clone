@@ -8,8 +8,7 @@ Users can sign up, login, view and post photos, search and follow other users.
 ## Screenshot 
 ### Homepage
 
-<img src="https://raw.githubusercontent.com/Morces/instagram-clone/master/static/images/instagram.png">
-
+![instagram](https://user-images.githubusercontent.com/97943808/172605450-7fe3bbe5-0fd4-4839-ab53-c006f7362c33.png)
 ### User Story
 One should be able to:
 - View different photos that interests them.
