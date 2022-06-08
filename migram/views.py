@@ -12,6 +12,7 @@ from django.views.generic import RedirectView
 def index(request):
     images = Post.objects.all()
     users = User.objects.exclude(id=request.user.id)
+    stories = Story.objects.all()
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -21,7 +22,7 @@ def index(request):
             return HttpResponseRedirect(request.path_info)
     else:
         form = PostForm()
-    context = {'images':images, 'form':form, 'users':users}
+    context = {'images':images, 'form':form, 'users':users, 'stories':stories}
     return render(request, 'index.html', context)
 
      

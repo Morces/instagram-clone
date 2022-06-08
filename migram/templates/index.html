@@ -8,75 +8,26 @@
 
 {% block content %}
 
-<!-- <div class="post-story">
-    
-    <div class="posts">
-        
-        <div class="card" id="post">
-            <div class="card-header post-header">
-                <div class="profile-image">
-                    <img src="{{post.profile.picture.url}}" height="30" style="border-radius: 50%; padding: 0; margin: 0;display: inline-block; width: 30px; border-radius: 50%;" alt="">
-                </div>
-                <div class="post-info">
-                    <div class="post-name">{{request.user}}</div>
-                    <div class="post-location">Nairobi</div>
-                </div>
-                <div class="options">
-                    <i class="bi bi-three-dots"></i>
-                </div>
-            </div>
-            <div class="posting">
-                <img src="{{post.image.url}}" alt="" style="width: 100%;">
-            </div>
-            <div class="engagement">
-                <a href="/like/{{post.id}}" id="like">
-                    <i class="bi bi-heart"></i>
-                </a>
-                <a href="">
-                    <i class="bi bi-chat"></i>
-                </a>
-                <a href="">
-                    <i class="bi bi-send"></i>
-                </a>
-                <a href="">
-                    <i class="bi bi-bookmark"></i>
-                </a>
-            </div>
-            <div class="likes">
-                <span><p id="like-count">{{post.likes.count}}likes</p></span>
-                
-            </div>
-            <div class="caption">
-                <a href=""><h6>{{post.profile.user}}</h6></a>
-                <span><p>{{post.caption}}</p></span>
-            </div> 
-            <div class="time-posted">
-                {{ post.created | timesince }} AGO
-            </div>
-        </div>
-       
-    </div>
-</div> -->
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-7">
-            <!-- <div class="row">
+            <div class="row">
                 <div class="stories">
-                    <div class="story">
-                        <img src="{{story.story.url}}" id="story-image" alt="">
+                    <div class=" card story" style=" overflow-x: scroll; display: flex; flex-direction:row; padding: 10px 10px; ">
+                        {% for story in stories %}
+                        <img src="{{story.story.url}}" id="story-image" style="border-radius: 50%; border: 2px  solid rgb(248, 84, 111); padding: 2px;margin: 5px 5px 5px 5px; display: flex; flex-direction: row; justify-content: flex-start;" height="70" width="70" alt="">
+                        {% endfor %}
                     </div>
                 </div>
-            </div> -->
+            </div>
             {% for image in images %}
             <div class="card mb-4">
                 <div class="card-header">
                     <img src="{{image.profile.picture.url}}" class="rounded-circle border ml-3 mt-2  mr-3" alt="" width="35" height="35">
                     <div class="post-info">
-                        <div class="post-name">{{profile.user.username}}</div>
-                        <div class="post-location">Nairobi</div>
+                        <div class="post-name">{{image.user.username}}</div>
+                        <div class="post-location">{{image.profile.location}}</div>
                     </div>
                     <div class="options">
                         <i class="bi bi-three-dots"></i>
@@ -89,31 +40,53 @@
                         </div>
                     </a>
                 </div>
-                <div class="iconic ml-2">
+                <div class="engagement ml-2">
                     <button class="btn btn-sm" type="submit" name="image_id" value="{{image.id}}">
                         <a href="{% url 'comment' image.id %}">
                             <i class="bi bi-heart hearticon mx-auto" aria-hidden="true" ></i>
                         </a>
                     </button>
+
                     <button class="btn btn-sm" type="submit">
                         <a href="{% url 'comment' image.id %}">
                             <i class="bi bi-chat hearticon mx-auto" aria-hidden="true"></i>
                         </a>
                     </button>
+                    <button class="btn btn-sm" type="submit" name="image_id" value="{{image.id}}">
+                        <a href="{% url 'comment' image.id %}">
+                            <i class="bi bi-send hearticon mx-auto" aria-hidden="true" ></i>
+                        </a>
+                    </button>
+                    <button class="btn btn-sm" type="submit" style="float: right;">
+                        <a href="{% url 'comment' image.id %}">
+                            <i class="bi bi-bookmark hearticon mx-auto"  aria-hidden="true"></i>
+                        </a>
+                    </button>
                 </div>
-                <span class="ml-4 mb-1"><strong>{{image.likes.count}} like{{image.likes.count|pluralize}}</strong></span>
-                <span class="text-secondary ml-4 viewall"><a href="{% url 'comment' image.id %}">view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a></span>
+                <div class="caption">
+                    <a href=""><h6>{{image.user.username}}</h6></a>
+                    <span>{{image.caption}}</span>
+                </div>
+                <div class="viewall">
+                    <span class="ml-4 mb-1"><strong>{{image.likes.count}} like{{image.likes.count|pluralize}}</strong></span>
+                    <span class="text-secondary com ml-4"><a href="{% url 'comment' image.id %}">view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a></span>
+                </div>
+                
                 <div class="allcomments mb-4">
                 {% for comment in image.comments.all|slice:'2' %}
                 <div class="comment">
-                    <div class="ml-4"><strong>{{ comment.user.user.username }}</strong>
-                            <span class="text-secondary">{{ comment.comment }}</span>
+                    <div class="viewcom">
+                        <strong>{{ comment.image.user.username }}</strong>
+                        <span class="text-secondary"><p>{{ comment.comment }}</p></span>
                     </div>
                 </div>
                 {% empty %}
                 {% endfor %}
-                <p class="text-secondary ml-4">{{image.created|timesince}}</p>
+                    <div class="time-posted">
+                        <p >{{image.created|timesince}} AGO</p>
+                    </div>
                 </div>
+                
             </div>
             {% endfor %}
         </div>
@@ -124,22 +97,22 @@
                 </div>
                 <div class="col-md-6 mt-4 user-detail">
                     <span class=" text-secondary"></span> <br>
-                    <span class=" inname">{{ user.profile.name }}</span>
+                    <span class=" inname">{{ user.profile.user.username }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10">
                     <div class="card mt-4 mr-2 ml-2">
-                        <div class="card-title text-secondary mt-2 mr-2 ml-2 ">Suggestions</div>
+                        <div class="card-title text-secondary mt-2 mr-2 ml-2" style="text-align: center;">Suggestions</div>
                         {% for user in users %}
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-2 mr-3 mt-1 mb-2">
-                                    <img class="img-responsive" src="{{ image.profile.picture.url }}"
-                                         width="55px" height="55px">
+                                    <img class="img-responsive" src="{{ user.profile.picture.url }}"
+                                         width="55px" height="55px" style="border-radius: 50%;">
                                 </div>
                                 <div class="col-md-6 mr-2 mt-2">
-                                    <span></span>
+                                    <span><a href="/profile/{user.profile.user}" style="text-decoration: none; color:black; text-align: right;">{{user.profile.user.username}}</a></span>
                                 </div>
                                 <div class="col-md-4">
                                 </div>
