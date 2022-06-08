@@ -11,11 +11,11 @@ Users can sign up, login, view and post photos, search and follow other users.
 ![instagram](https://user-images.githubusercontent.com/97943808/172605450-7fe3bbe5-0fd4-4839-ab53-c006f7362c33.png)
 ### User Story
 One should be able to:
-- View different photos that interests them.
-- Click on a single photo to expand it and also view details of the photo.
-- Search for different categories of photos.
-- Copy a link to the photo to share with friends.
-- View photos based on the location they were taken.
+* Sign in to the application to start using.  
+* Upload a pictures to the application. 
+* Search for different users using their usernames.  
+* See your profile with all your pictures.  
+* Follow other users and see their pictures on my timeline.  
 
 ### Setup Instructions
 
